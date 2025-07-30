@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+
+
+shadowJar {
+    archiveClassifier.set('')
+    manifest {
+        attributes 'Main-Class': 'org.example.view.Rubrica'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    implementation 'com.mysql:mysql-connector-j:9.4.0'
+}
+
+test {
+    useJUnitPlatform()
+}
